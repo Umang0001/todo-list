@@ -1,0 +1,22 @@
+<div class="form-wrapper">
+    <form [formGroup]="todoItem" (submit)="handleSubmit()">
+        <div class="field">
+            <input class="task-name" type="text" placeholder="Enter task name..." formControlName="task">
+            <p class="error" [class.hidden]="!((todoItem.controls.task.invalid && todoItem.controls.task.touched)|| (todoItem.controls.task.invalid && this.onceSubmitted===true))">This is a required field.</p>
+        </div>
+        <div class="field">
+            <input type="text" placeholder="Enter description..." formControlName="description">
+            <p class="error" [class.hidden]="!((todoItem.controls.description.invalid && todoItem.controls.description.touched)|| (todoItem.controls.description.invalid && this.onceSubmitted===true))">This is a required field.</p>
+        </div>
+        <div class="field">
+            <input type="date" formControlName="dueDate">
+            <p class="error" [class.hidden]="!((todoItem.controls.dueDate.invalid && (todoItem.controls.dueDate.touched))|| (todoItem.controls.dueDate.invalid && this.onceSubmitted===true))">
+                <span *ngIf="!todoItem.controls.dueDate.value">This is a required field.</span>
+                <span *ngIf="todoItem.controls.dueDate.value">Select a valid date.(it should be a present or future date)</span>
+            </p>
+        </div>
+        <div class="btn-wrapper">
+            <button>Add</button>
+        </div>
+    </form>
+</div>

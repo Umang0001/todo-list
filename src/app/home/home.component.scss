@@ -1,0 +1,25 @@
+.site-wrapper{
+    width: 100%;
+    margin: auto;
+    @media  screen  and (min-width: 768px){
+        max-width: 720px;
+    }
+    @media  screen  and (min-width: 1200px){
+        max-width: 1140px;
+    }
+}
+
+.heading{
+    text-align: center;
+    margin-bottom: 30px;
+    h1{
+        margin:15px 0;
+    }
+}
+.todo-wrapper{
+    text-align: center;
+    margin-bottom: 15px;
+}
+.notask-msg{
+    margin-bottom: 5px;
+}

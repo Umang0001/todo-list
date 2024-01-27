@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.hidden{
+    visibility: hidden;
+    opacity: 0;
+}
+tr.completed{
+    background-color: darkgreen;
+    td:not(.actions),label{
+        color: white;
+    }
+}
+
+button{
+    padding: 6px 20px;
+    border-radius: 10px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.todo-fixed{
+    .form-wrapper{
+        opacity: 0;
+        visibility: hidden;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #00000075;
+        transition: all .3s ease-in-out;
+        pointer-events: none;
+    }
+    form{
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        padding: 20px;
+        background-color: white;
+        border-radius: 20px;
+        transition: top .3s ease-in-out;
+        pointer-events: none;
+    }
+    &.open{
+        .form-wrapper{
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+        form{
+            top: 150px;
+            pointer-events: auto;
+        }
+    }
+}

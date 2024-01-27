@@ -1,0 +1,30 @@
+<div class="table-holder">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Task</th>
+                <th>Description</th>
+                <th>Due Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngIf="todoList.length else noTodo">
+                <tr [ngClass]="todo.status==='completed'?'completed':''" *ngFor="let todo of todoList ; index as i">
+                    <td><strong>{{todo.task}}</strong></td>
+                    <td>{{todo.description}}</td>
+                    <td>{{todo.dueDate}}</td>
+                    <td>{{todo.status}}</td>
+                    <td class="actions"><label>Mark as complete</label><input type="checkbox" (change)="handleChange(todo,$event,i)"> <button (click)="handleDelete(i)">Delete</button></td>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table>
+</div>
+
+<ng-template #noTodo>
+    <td colspan="5">
+        <p class="notask-msg">You have no pending tasks!</p>
+    </td>
+</ng-template>

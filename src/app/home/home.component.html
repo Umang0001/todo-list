@@ -1,0 +1,13 @@
+<div class="site-wrapper">
+    <div class="heading">
+        <h1>TaskFlow</h1>
+        <p class="tagline">Streamlining Your Tasks, One Flow at a Time.</p>
+    </div>
+    <div class="todo-wrapper">
+            <app-todo-table (deleteTodo)="deleteTodo($event)" (modifyTodo)="modifyStatus($event)" [todoList]="todoList"></app-todo-table>
+            <div class="btn-wrapper">
+                <button (click)="handleAddNew()">Add New</button>
+            </div>
+    </div>
+    <app-todo-form class="todo-fixed" (pushTodo)="pushTodo($event)"></app-todo-form>
+</div>
