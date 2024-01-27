@@ -1,5 +1,6 @@
 <div class="form-wrapper">
     <form [formGroup]="todoItem" (submit)="handleSubmit()">
+        <h2>Enter Todo Details</h2>
         <div class="field">
             <input class="task-name" type="text" placeholder="Enter task name..." formControlName="task">
             <p class="error" [class.hidden]="!((todoItem.controls.task.invalid && todoItem.controls.task.touched)|| (todoItem.controls.task.invalid && this.onceSubmitted===true))">This is a required field.</p>
@@ -17,6 +18,7 @@
         </div>
         <div class="btn-wrapper">
             <button>Add</button>
+            <span class="close" (click)="handleClose()"><img src="../../assets/images/close.png" alt="close"></span>
         </div>
     </form>
 </div>

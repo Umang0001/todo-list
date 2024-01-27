@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Todo } from '../utils/interface';
 
@@ -11,8 +11,17 @@ import { Todo } from '../utils/interface';
   styleUrl: './todo-form.component.scss'
 })
 export class TodoFormComponent {
-  constructor(private _fb:FormBuilder){}
+  constructor(
+    private _fb:FormBuilder,
+    private _ref:ElementRef
+    ){}
+  ngAfterViewInit(){
+    this.todoWrapper=this._ref.nativeElement.querySelector("form").closest(".todo-fixed");
+    console.log(this.todoWrapper);
+    
+  }
   onceSubmitted : boolean =false;
+  todoWrapper:any;
   @Output() pushTodo = new EventEmitter<Todo>();
   todoItem =this._fb.group({
     task:["", Validators.required],
@@ -47,5 +56,8 @@ export class TodoFormComponent {
       this.todoItem.reset();
       this.onceSubmitted=false;
     }
+  }
+  handleClose(){
+    this.todoWrapper.classList.remove("open");
   }
 }
